@@ -1,0 +1,39 @@
+.sidebar {
+    background-color: #014a99;
+    height: 100vh;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    width: 100px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+.upload-btn {
+    margin-top: 100px;
+}
+body{
+    min-width: 600px;
+}
+
+#loader {
+    border: 8px solid #d4d4d4; 
+    border-top: 8px solid #3f3f3f; 
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    left: 25%;
+    top: 200%
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.upload-container {
+    display: inline-block;
+    position: relative;
+}
