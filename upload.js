@@ -82,10 +82,33 @@ if (!token) {
 	window.location.href = 'login.html';
 }
 
-function checkifloggedin(){
-    const token = localStorage.getItem('token');
-    if (!token) {
-        // User is not logged in, redirect to login page
-        window.location.href = 'login.html';
+async function checkifloggedin() {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    // User is not logged in, redirect to login page
+    window.location.href = 'login.html';
+    return;
+  }
+
+  try {
+    const response = await fetch('http://localhost:8080/auth/validate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    if (!response.ok) {
+      // Token is invalid, redirect to login page
+      window.location.href = 'login.html';
     }
+  } catch (error) {
+    // Handle errors
+    console.error(error);
+  }
+}
+
+function logout() {
+  localStorage.clear(); // Clears all data from localStorage
+  window.location.replace(""); // Redirects to login page
 }

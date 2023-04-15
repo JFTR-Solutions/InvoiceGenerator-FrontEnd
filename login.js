@@ -24,7 +24,7 @@ loginForm.addEventListener('submit', (event) => {
 		window.location.href = 'index.html';
 	})
 	.catch(error => {
-		alert(error.message);
+		console.log(error.message);
 	});
 });
 
