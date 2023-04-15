@@ -3,7 +3,7 @@ loginForm.addEventListener('submit', (event) => {
 	event.preventDefault();
 	const username = loginForm.elements['username'].value;
 	const password = loginForm.elements['password'].value;
-	fetch('http://localhost:8080/auth/login', {
+	fetch('swiftmarine.azurewebsites.net/auth/login', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
