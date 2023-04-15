@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
           formData.append('files', file);
         });
         try {
-          const apiUrl = 'swiftmarine.azurewebsites.net/invoices/byte';
+          const apiUrl = 'http://swiftmarine.azurewebsites.net/invoices/byte';
 				const token = localStorage.getItem('token');
 				if (!token) {
 					throw new Error('User not logged in');
@@ -91,7 +91,7 @@ async function checkifloggedin() {
   }
 
   try {
-    const response = await fetch('swiftmarine.azurewebsites.net/auth/validate', {
+    const response = await fetch('http://swiftmarine.azurewebsites.net/auth/validate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
