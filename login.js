@@ -1,6 +1,7 @@
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (event) => {
 	event.preventDefault();
+	document.getElementById("loader").style.display = "block";
 	const username = loginForm.elements['username'].value;
 	const password = loginForm.elements['password'].value;
 	fetch('https://swiftmarine.azurewebsites.net/auth/login', {
@@ -21,6 +22,7 @@ loginForm.addEventListener('submit', (event) => {
 	})
 	.then(data => {
 		localStorage.setItem('token', data.token);
+		document.getElementById("loader").style.display = "none";
 		window.location.href = 'index.html';
 	})
 	.catch(error => {
