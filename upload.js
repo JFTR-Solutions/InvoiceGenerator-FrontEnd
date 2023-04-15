@@ -10,14 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
       input.addEventListener('change', async () => {
         document.getElementById("loader").style.display = "block";
         const files = Array.from(input.files);
+        const dispatchNumber = document.getElementById("numberInput").value;
         if (files.length === 0) return;
-  
+      
         const formData = new FormData();
-  
+        formData.append('dispatchNumber', dispatchNumber);
+      
         files.forEach((file) => {
           formData.append('files', file);
         });
-  
         try {
           const apiUrl = 'http://localhost:8080/invoices/byte';
           const response = await uploadFiles(formData, apiUrl);

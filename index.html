@@ -15,26 +15,55 @@
 			<div class="col-md-2 sidebar">
 			<img src="/images/SWIFT.jpg" alt="SWIFT" class="img-fluid">
 			</div>
-			<!-- Main Content -->
-			<div class="col-md-10">
-				<div class="row">
-					<div class="col-md-12 text-center upload-btn">
-						<h1>Upload Documents</h1>
-						<p>Click the button below to upload your documents.</p>
-                        <div class="upload-container">
-						    <button class="btn btn-primary btn-upload">Upload</button>
-                            <div id="loader" style="display: none"></div>
-                        </div>
-                        <p class="upload-status"></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- Main Content -->
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-12 text-center upload-btn">
+                <h1>Upload Documents</h1>
+                <p>Click the button below to upload your documents.</p>
+                <div class="upload-container">
+                    <button class="btn btn-primary btn-upload" id="uploadButton" disabled>Upload</button>
+                    <div id="loader" style="display: none"></div>
+                </div>
+                <p class="upload-status"></p>
+
+                <!-- Wrap the input field and its label inside a centered container -->
+                <div class="text-center">
+                    <div class="form-group d-inline-block">
+                        <label for="numberInput">Enter dispatch number:</label>
+                        <input type="number" class="form-control" id="numberInput" style="width: 8em;" min="1000000" max="9999999" title="Please enter a 7-digit number">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	<!-- Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-P+zx3qy2znSWjKvMFzpgbz/ZM19OW+PTcWZV1iCicbfrghwvjg3QbOHYKWj01AYR" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="upload.js"></script>
 </body>
+<script>
+    // Get the input field and upload button elements
+    const numberInput = document.getElementById('numberInput');
+    const uploadButton = document.getElementById('uploadButton');
+
+    // Add an event listener to the input field
+    numberInput.addEventListener('input', () => {
+        // If the input value length is more than 7, remove the extra digits
+        if (numberInput.value.length > 7) {
+            numberInput.value = numberInput.value.slice(0, 7);
+        }
+
+        // Check if the input value is a valid 7-digit number
+        if (numberInput.value.length === 7 && !isNaN(numberInput.value)) {
+            // Enable the upload button
+            uploadButton.disabled = false;
+        } else {
+            // Disable the upload button
+            uploadButton.disabled = true;
+        }
+    });
+</script>
+
 </html>
