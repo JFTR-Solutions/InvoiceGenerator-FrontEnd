@@ -21,7 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         try {
           const apiUrl = 'http://localhost:8080/invoices/byte';
-          const response = await uploadFiles(formData, apiUrl);
+				const token = localStorage.getItem('token');
+				if (!token) {
+					throw new Error('User not logged in');
+				}
+				const response = await fetch(apiUrl, {
+					method: 'POST',
+					headers: {
+						'Authorization': `Bearer ${token}`
+					},
+					body: formData
+				});
   
           if (response.status === 200) {
             // Convert the response to a byte array using a FileReader
@@ -65,3 +75,17 @@ document.addEventListener('DOMContentLoaded', () => {
     link.download = fileName;
     link.click();
   }
+
+  const token = localStorage.getItem('token');
+if (!token) {
+	// User is not logged in, redirect to login page
+	window.location.href = 'login.html';
+}
+
+function checkifloggedin(){
+    const token = localStorage.getItem('token');
+    if (!token) {
+        // User is not logged in, redirect to login page
+        window.location.href = 'login.html';
+    }
+}
