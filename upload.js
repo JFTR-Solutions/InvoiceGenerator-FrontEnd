@@ -61,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
   async function uploadFiles(formData, url) {
     const response = await fetch(url, {
       method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
       body: formData,
     });
   
