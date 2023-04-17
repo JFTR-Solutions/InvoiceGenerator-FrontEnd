@@ -1,5 +1,5 @@
-const URL = 'http://localhost:8080/';
-//const URL = 'https://swiftmarine.azurewebsites.net/';
+//const URL = 'http://localhost:8080/';
+const URL = 'https://swiftmarine.azurewebsites.net/';
 
 document.addEventListener('DOMContentLoaded', () => {
     const uploadButton = document.querySelector('.btn-upload');
@@ -79,8 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function downloadFile(byteArray, fileName) {
     const blob = new Blob([byteArray], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+<<<<<<< HEAD
 
     const url = URL.createObjectURL(blob);
+=======
+    const url = window.URL.createObjectURL(blob);
+>>>>>>> 6e5ff4ca9d6dd8f12eed0b78bb20a0b873fc5b69
     const link = document.createElement('a');
     link.href = url;
     link.download = fileName;
@@ -114,10 +118,13 @@ async function checkifloggedin() {
       window.location.href = 'login.html';
     }
   } catch (error) {
-    // Handle errors
+    // Handle network or server errors
     console.error(error);
+    // Display an error message to the user
+    console.log('An error occurred while validating your token. Please try again later.');
   }
 }
+
 
 function logout() {
   localStorage.clear(); // Clears all data from localStorage
