@@ -5,6 +5,7 @@ const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (event) => {
 	event.preventDefault();
 	document.getElementById("loader").style.display = "block";
+	document.getElementById("submitBtn").style.display = "none";
 	const username = loginForm.elements['username'].value;
 	const password = loginForm.elements['password'].value;
 	fetch(URL, {
@@ -26,6 +27,7 @@ loginForm.addEventListener('submit', (event) => {
 	.then(data => {
 		localStorage.setItem('token', data.token);
 		document.getElementById("loader").style.display = "none";
+		document.getElementById("submitBtn").style.display = "block";
 		window.location.href = 'index.html';
 	})
 	.catch(error => {
