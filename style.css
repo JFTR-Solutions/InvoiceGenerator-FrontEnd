@@ -4,7 +4,7 @@
     color: #fff;
     padding: 20px;
     position: fixed;
-    width: 100px;
+    width: 105px;
     left: 0;
     top: 0;
     bottom: 0;
@@ -22,15 +22,15 @@ input {
 
 
 #loader {
-    border: 8px solid #d4d4d4; 
-    border-top: 8px solid #3f3f3f; 
+    border: 5px solid #d4d4d4; 
+    border-top: 5px solid #3f3f3f; 
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     animation: spin 1s linear infinite;
     position: absolute;
-    left: 25%;
-    top: 200%
+    left: 120%;
+    top: 10%
   }
   
   @keyframes spin {

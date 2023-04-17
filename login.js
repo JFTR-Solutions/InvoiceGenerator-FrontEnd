@@ -1,10 +1,13 @@
+//const URL = 'http://localhost:8080/auth/login';
+const URL = 'https://swiftmarine.azurewebsites.net/auth/validate';
+
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (event) => {
 	event.preventDefault();
 	document.getElementById("loader").style.display = "block";
 	const username = loginForm.elements['username'].value;
 	const password = loginForm.elements['password'].value;
-	fetch('https://swiftmarine.azurewebsites.net/auth/login', {
+	fetch(URL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'

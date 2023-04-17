@@ -1,4 +1,6 @@
-const API_URL = 'https://swiftmarine.azurewebsites.net';
+//const URL = 'http://localhost:8080/';
+const URL = 'https://swiftmarine.azurewebsites.net/';
+
 document.addEventListener('DOMContentLoaded', () => {
     const uploadButton = document.querySelector('.btn-upload');
   
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
           formData.append('files', file);
         });
         try {
-          const apiUrl = API_URL + '/invoices/byte';
+          const apiUrl = URL + 'invoices/byte';
 				const token = localStorage.getItem('token');
 				if (!token) {
 					throw new Error('User not logged in');
@@ -95,7 +97,7 @@ async function checkifloggedin() {
   }
 
   try {
-    const response = await fetch(API_URL + '/auth/validate', {
+    const response = await fetch(URL + 'auth/validate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
