@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function downloadFile(byteArray, fileName) {
     const blob = new Blob([byteArray], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    const url = URL.createObjectURL(blob);
+    const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
     link.download = fileName;
