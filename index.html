@@ -25,6 +25,13 @@
         <div class="row">
             <div class="col-md-12 text-center upload-btn">
                 <h1>Upload Invoices</h1>
+                   <!-- Wrap the input field and its label inside a centered container -->
+                   <div class="text-center">
+                    <div class="form-group d-inline-block">
+                        <label for="numberInput">Enter dispatch number to :</label>
+                        <input type="number" class="form-control" id="numberInput" style="width: 11em;" min="1000000" max="9999999" title="Please enter a 7-digit number">
+                    </div>
+                </div>
                 <p>Click the button below to upload your invoices.</p>
                 <div class="upload-container">
                     <button class="btn btn-primary btn-upload" id="uploadButton" style="display: block" disabled>Upload</button>
@@ -32,13 +39,7 @@
                 </div>
                 <p class="upload-status"></p>
 
-                <!-- Wrap the input field and its label inside a centered container -->
-                <div class="text-center">
-                    <div class="form-group d-inline-block">
-                        <label for="numberInput">Enter dispatch number:</label>
-                        <input type="number" class="form-control" id="numberInput" style="width: 11em;" min="1000000" max="9999999" title="Please enter a 7-digit number">
-                    </div>
-                </div>
+             
             </div>
         </div>
 
