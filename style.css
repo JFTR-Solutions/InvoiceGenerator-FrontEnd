@@ -9,6 +9,32 @@
     top: 0;
     bottom: 0;
 }
+
+.logout-btn {
+    background-color: #026bc1;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px; /* Set width for the button */
+    height: 40px; /* Set height for the button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 30vh;
+    margin-left: 10%;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #0281e2;
+}
+
+.fa-sign-out {
+    font-size: 20px; /* Adjust the size of the icon */
+    margin-left: 20%;
+}
+
 .upload-btn {
     margin-top: 100px;
 }
