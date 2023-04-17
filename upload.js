@@ -1,3 +1,4 @@
+const API_URL = 'https://swiftmarine.azurewebsites.net';
 document.addEventListener('DOMContentLoaded', () => {
     const uploadButton = document.querySelector('.btn-upload');
   
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
           formData.append('files', file);
         });
         try {
-          const apiUrl = 'https://swiftmarine.azurewebsites.net/invoices/byte';
+          const apiUrl = API_URL + '/invoices/byte';
 				const token = localStorage.getItem('token');
 				if (!token) {
 					throw new Error('User not logged in');
@@ -94,7 +95,7 @@ async function checkifloggedin() {
   }
 
   try {
-    const response = await fetch('https://swiftmarine.azurewebsites.net/auth/validate', {
+    const response = await fetch(API_URL + '/auth/validate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -106,10 +107,13 @@ async function checkifloggedin() {
       window.location.href = 'login.html';
     }
   } catch (error) {
-    // Handle errors
+    // Handle network or server errors
     console.error(error);
+    // Display an error message to the user
+    console.log('An error occurred while validating your token. Please try again later.');
   }
 }
+
 
 function logout() {
   localStorage.clear(); // Clears all data from localStorage
