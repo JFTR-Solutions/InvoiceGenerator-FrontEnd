@@ -101,7 +101,7 @@ async function checkifloggedin() {
   }
 
   try {
-    const response = await fetch(URL + 'auth/validate', {
+    const response = await fetch(URL + 'auth/validatetoken', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -109,14 +109,15 @@ async function checkifloggedin() {
       }
     });
     if (!response.ok) {
-      // Token is invalid, redirect to login page
-      window.location.href = 'login.html';
+      throw new Error('Invalid token');
     }
   } catch (error) {
     // Handle network or server errors
     console.error(error);
     // Display an error message to the user
-    console.log('An error occurred while validating your token. Please try again later.');
+    localStorage.setItem('errorMessage', 'tokeninvalid');
+    window.location.href = 'login.html';
+    errorMessage.textContent = 'Invalid token. Please login again..';
   }
 }
 
