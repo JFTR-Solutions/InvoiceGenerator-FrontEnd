@@ -15,16 +15,19 @@
 <!-- Sidebar -->
 <div class="col-md-2 sidebar">
     <img src="/images/SWIFT.jpg" alt="SWIFT" class="img-fluid">
+	<button id="logout-btn" class="btn btn-light" style="margin-top: 30vh; margin-left: -5px;"  onclick="logout()">
+		<i class="fa fa-sign-out"></i> Logout
+	  </button>
     
   </div>
     <!-- Main Content -->
-    <div class="col-md-10">
+    <div class="container">
         <div class="row">
             <div class="col-md-12 text-center upload-btn">
-                <h1>Upload Documents</h1>
-                <p>Click the button below to upload your documents.</p>
+                <h1>Upload Invoices</h1>
+                <p>Click the button below to upload your invoices.</p>
                 <div class="upload-container">
-                    <button class="btn btn-primary btn-upload" id="uploadButton" disabled>Upload</button>
+                    <button class="btn btn-primary btn-upload" id="uploadButton" style="display: block" disabled>Upload</button>
                     <div id="loader" style="display: none"></div>
                 </div>
                 <p class="upload-status"></p>
@@ -33,14 +36,12 @@
                 <div class="text-center">
                     <div class="form-group d-inline-block">
                         <label for="numberInput">Enter dispatch number:</label>
-                        <input type="number" class="form-control" id="numberInput" style="width: 8em;" min="1000000" max="9999999" title="Please enter a 7-digit number">
+                        <input type="number" class="form-control" id="numberInput" style="width: 11em;" min="1000000" max="9999999" title="Please enter a 7-digit number">
                     </div>
                 </div>
             </div>
         </div>
-        <button id="logout-btn" class="btn btn-light" onclick="logout()">
-            <i class="fa fa-sign-out"></i> Logout
-          </button>
+
     </div>
     
 	<!-- Bootstrap JS -->

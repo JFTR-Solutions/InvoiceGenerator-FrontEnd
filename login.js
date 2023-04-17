@@ -1,5 +1,5 @@
-//const URL = 'http://localhost:8080/auth/login';
-const URL = 'https://swiftmarine.azurewebsites.net/auth/validate';
+const URL = 'http://localhost:8080/auth/login';
+//const URL = 'https://swiftmarine.azurewebsites.net/auth/validate';
 
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (event) => {

@@ -1,5 +1,5 @@
-//const URL = 'http://localhost:8080/';
-const URL = 'https://swiftmarine.azurewebsites.net/';
+const URL = 'http://localhost:8080/';
+//const URL = 'https://swiftmarine.azurewebsites.net/';
 
 document.addEventListener('DOMContentLoaded', () => {
     const uploadButton = document.querySelector('.btn-upload');
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       input.addEventListener('change', async () => {
         document.getElementById("loader").style.display = "block";
+        document.getElementById("uploadButton").style.display = "none";
         const files = Array.from(input.files);
         const dispatchNumber = document.getElementById("numberInput").value;
         if (files.length === 0) return;
@@ -47,13 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             fileReader.readAsArrayBuffer(blob);
             document.getElementById("loader").style.display = "none";
+            document.getElementById("uploadButton").style.display = "block";
           } else {
             console.error('Failed to upload files', response);
             document.getElementById("loader").style.display = "none";
+            document.getElementById("uploadButton").style.display = "block";
           }
         } catch (error) {
           console.error('Error uploading files', error);
           document.getElementById("loader").style.display = "none";
+          document.getElementById("uploadButton").style.display = "block";
         }
       });
   
@@ -75,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function downloadFile(byteArray, fileName) {
     const blob = new Blob([byteArray], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
