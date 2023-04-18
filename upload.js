@@ -1,4 +1,4 @@
-//const URL = 'http://localhost:8080/';
+// const URL = 'http://localhost:8080/';
 const URL = 'https://swiftmarine.azurewebsites.net/';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fileReader.onload = () => {
               const byteArray = new Uint8Array(fileReader.result);
               // Use the byte array to download the file
-              downloadFile(byteArray, 'Invoice.xlsx');
+              downloadFile(byteArray, dispatchNumber + '_Invoice.xlsx');
             };
             fileReader.readAsArrayBuffer(blob);
             document.getElementById("loader").style.display = "none";
