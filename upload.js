@@ -2,8 +2,34 @@
 const URL = 'https://swiftmarine.azurewebsites.net/';
 
 document.addEventListener('DOMContentLoaded', () => {
+  checkifloggedin();
     const uploadButton = document.querySelector('.btn-upload');
   
+    if (document.getElementById('numberInput')) {
+      const numberInput = document.getElementById('numberInput');
+    
+      // Add an event listener to the input field
+      numberInput.addEventListener('input', () => {
+        // If the input value length is more than 7, remove the extra digits
+        if (numberInput.value.length > 7) {
+          numberInput.value = numberInput.value.slice(0, 7);
+        }
+    
+        // Check if the input value is a valid 7-digit number
+        if (numberInput.value.length === 7 && !isNaN(numberInput.value)) {
+          // Enable the upload button
+          uploadButton.disabled = false;
+        } else {
+          // Disable the upload button
+          uploadButton.disabled = true;
+        }
+      });
+    }
+
+    
+    if (document.getElementById('uploadButton')) {
+      const uploadButton = document.getElementById('uploadButton');
+
     uploadButton.addEventListener('click', () => {
       const input = document.createElement('input');
       input.type = 'file';
@@ -63,8 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
       input.click();
     });
+    }
   });
-  
   async function uploadFiles(formData, url) {
     const response = await fetch(url, {
       method: 'POST',
@@ -86,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     link.click();
   }
 
-  const token = localStorage.getItem('token');
+/*   const token = localStorage.getItem('token');
 if (!token) {
 	// User is not logged in, redirect to login page
 	window.location.href = 'login.html';
@@ -97,7 +123,6 @@ async function checkifloggedin() {
   if (!token) {
     // User is not logged in, redirect to login page
     window.location.href = 'login.html';
-    return;
   }
 
   try {
@@ -122,7 +147,9 @@ async function checkifloggedin() {
 }
 
 
+
 function logout() {
   localStorage.clear(); // Clears all data from localStorage
   window.location.replace(""); // Redirects to login page
 }
+ */

@@ -74,6 +74,20 @@ input {
     align-items: center;
 }
 
+.button-container-left {
+    justify-content: flex-start;
+    width: 100%;
+    margin-left: 110px;
+  }
+
+
+.container-top {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
+
 .container-fluid {
     min-width: 600px;
   }
