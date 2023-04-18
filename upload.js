@@ -1,5 +1,5 @@
-// const URL = 'http://localhost:8080/';
-const URL = 'https://swiftmarine.azurewebsites.net/';
+const URL = 'http://localhost:8080/';
+//const URL = 'https://swiftmarine.azurewebsites.net/';
 
 document.addEventListener('DOMContentLoaded', () => {
     const uploadButton = document.querySelector('.btn-upload');
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     uploadButton.addEventListener('click', () => {
       const input = document.createElement('input');
       input.type = 'file';
-      input.accept = 'application/pdf'; // Add other accepted file types if needed, e.g. 'image/*' for images
+      input.accept = 'application/pdf';
       input.multiple = true; // Allow multiple files to be selected
   
       input.addEventListener('change', async () => {

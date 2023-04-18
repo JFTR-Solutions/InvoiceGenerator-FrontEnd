@@ -1,5 +1,5 @@
-//const headURL = 'http://localhost:8080/';
-const headURL = "https://swiftmarine.azurewebsites.net/";
+const headURL = 'http://localhost:8080/';
+//const headURL = "https://swiftmarine.azurewebsites.net/";
 
 const container = document.querySelector("#example1");
 let hot = null;
@@ -17,7 +17,8 @@ uploadButtonInvoiceEx.addEventListener("click", () => {
   input.multiple = true; // Allow multiple files to be selected
 
   input.addEventListener("change", async () => {
-    document.getElementById("loader2").style.display = "block";
+    document.getElementById("loader").style.display = "block";
+    document.getElementById("uploadButton-invoice-ex").style.display = "none";
     uploadButtonInvoiceEx.style.display = "none";
     const files = Array.from(input.files);
     if (files.length === 0) return;
@@ -29,7 +30,7 @@ uploadButtonInvoiceEx.addEventListener("click", () => {
     });
 
     console.log("Number of files: " + files.length);
-    const apiURL = headURL + "invoices";
+    const apiURL = headURL + "invoices/test";
     const token = localStorage.getItem("token");
 
     fetch(apiURL, {
@@ -54,6 +55,11 @@ uploadButtonInvoiceEx.addEventListener("click", () => {
           data.push(itemInfo);
           console.log(itemInfo);
           createTable();
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("uploadButton-invoice-ex").style.display = "block";
+          document.getElementById("exportButton").style.display = "block";
+          document.getElementById("copyButton").style.display = "block";
+          document.getElementById("resetButton").style.display = "block";
         });
       })
       .catch((error) => {
@@ -87,6 +93,16 @@ function createTable() {
     customBorders: true,
     licenseKey: "non-commercial-and-evaluation",
   });
+}
+
+function clearTable(){
+  let text = "Are you sure you want to clear the table?"
+  if(!confirm(text)) return;
+  hot.destroy(); //removes Handsontable from the page
+  data.length = 0;  //clears data in table
+  document.getElementById("exportButton").style.display = "none";
+  document.getElementById("copyButton").style.display = "none";
+  document.getElementById("resetButton").style.display = "none";
 }
 
 function exportToExcel() {

@@ -25,60 +25,75 @@
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
   </head>
   <body onload="checkifloggedin()">
-<!-- Sidebar -->
-<div class="col-md-2 sidebar">
-  <img src="/images/SWIFT.jpg" alt="SWIFT" class="img-fluid">
+    <div class="container-fluid2">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar">
+          <img src="/images/SWIFT.jpg" alt="SWIFT" class="img-fluid">
+          
+          <div class="sidebar-btns">
+            <a href="index.html" class="btn btn-primary mb-3 upload-container btn-block">
+              <i class="fa fa-home fa-lg"></i>
+            </a>
+            <a href="invoice-extractor.html" class="btn btn-primary mb-3 upload-container btn-block">
+              <i class="fa fa-file-text-o fa-lg"></i>
+            </a>
+            <a href="login.html" class="btn btn-primary mb-3 logout-btn btn-block pointer" onclick="logout()">
+              <i class="fa fa-sign-out fa-lg"></i>
+            </a>
+          </div>
+        </div>
   
-  <div class="sidebar-btns">
-  <a href="index.html" class="btn btn-primary mb-3 upload-container btn-block">
-      <i class="fa fa-home fa-lg"></i>
-  </a>
-  <a href="invoice-extractor.html" class="btn btn-primary mb-3 upload-container btn-block">
-      <i class="fa fa-file-text-o fa-lg"></i>
-  </a>
-  <a href="login.html" class="btn btn-primary mb-3 logout-btn btn-block pointer" onclick="logout()">
-      <i class="fa fa-sign-out fa-lg"></i>
-  </a>
-</div>
-</div>
-    <!-- Main Content -->
-
-    <div class="container">
-      <h1>Extract invoice data</h1>
-      <p>Click the button below to upload your invoices.</p>
-
-      <button
-        class="btn btn-primary"
-        id="uploadButton-invoice-ex"
-        style="display: block"
-      >
-        Upload
-      </button>
-      <div id="loader2" style="display: none"></div>
-      <p class="upload-status"></p>
-      <div style="display: flex;">
-        <button
-          class="btn btn-primary"
-          onclick="exportToExcel()"
-          style="display: none; margin-right: 10px;"
-        >
-          Export to Excel
-        </button>
-        <button
-          id="copyButton"
-          class="btn btn-primary"
-          onclick="copyToClipboard()"
-          style="display: none;"
-        >
-          Copy to Clipboard
-        </button>
+        <!-- Main Content -->
+        <div class="col-md-10 offset-md-2">
+          <div class="container">
+            <h1>Extract invoice data</h1>
+            <p>Click the button below to upload your invoices.</p>
+  
+            <button
+              class="btn btn-primary"
+              id="uploadButton-invoice-ex"
+              style="display: block"
+            >
+              Upload
+            </button>
+            <div id="loader" style="display: none"></div>
+            <p class="upload-status"></p>
+            <div style="display: flex; margin-bottom: 10px;">
+              <button
+                class="btn btn-primary"
+                id="exportButton"
+                onclick="exportToExcel()"
+                style="display: none; margin-right: 10px;"
+              >
+                Export to Excel
+              </button>
+              <button
+                id="copyButton"
+                class="btn btn-primary"
+                onclick="copyToClipboard()"
+                style="display: none; margin-right: 10px;"
+              >
+                Copy to Clipboard
+              </button>
+              <button
+              id="resetButton"
+              class="btn btn-danger"
+              onclick="clearTable()"
+              style="display: none;"
+            >
+              Reset
+            </button>
+            </div>
+            <br />
+            <div id="example1"></div>
+          </div>
+        </div>
       </div>
-      <br />
-      <div id="example1"></div>
     </div>
-
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    <script src="inovice-extractor.js"></script>
+    <script src="invoice-extractor.js"></script>
     <!-- Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
