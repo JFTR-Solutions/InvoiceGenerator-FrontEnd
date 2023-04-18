@@ -1,5 +1,5 @@
-const headURL = 'http://localhost:8080/';
-//const headURL = "https://swiftmarine.azurewebsites.net/";
+//const headURL = 'http://localhost:8080/';
+const headURL = "https://swiftmarine.azurewebsites.net/";
 
 const container = document.querySelector("#example1");
 let hot = null;
@@ -30,7 +30,7 @@ uploadButtonInvoiceEx.addEventListener("click", () => {
     });
 
     console.log("Number of files: " + files.length);
-    const apiURL = headURL + "invoices/test";
+    const apiURL = headURL + "invoices";
     const token = localStorage.getItem("token");
 
     fetch(apiURL, {

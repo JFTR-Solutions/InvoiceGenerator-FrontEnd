@@ -1,5 +1,5 @@
-const URL = 'http://localhost:8080/auth/login';
-//const URL = "https://swiftmarine.azurewebsites.net/auth/login";
+//const URL = 'http://localhost:8080/auth/login';
+const URL = "https://swiftmarine.azurewebsites.net/auth/login";
 
 const errorMessage = document.getElementById("errorMessage");
 
