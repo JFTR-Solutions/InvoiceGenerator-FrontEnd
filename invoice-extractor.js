@@ -91,7 +91,7 @@ function createTable() {
     data,
     startRows: 1,
     startCols: 5,
-    height: 500,
+    height: 1000,
     width: 1000,
     colWidths: [300, 50, 80, 80, 100, 200],
     colHeaders: true,
