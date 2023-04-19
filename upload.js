@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("loader").style.display = "none";
             document.getElementById("uploadButton").style.display = "block";
           } else {
-            console.error('Failed to upload files', response);
+            console.error('Failed to upload files', response.status, response.statusText);
             document.getElementById("loader").style.display = "none";
             document.getElementById("uploadButton").style.display = "block";
           }
