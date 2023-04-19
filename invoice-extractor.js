@@ -1,6 +1,7 @@
 //const headURL = 'http://localhost:8080/';
 const headURL = "https://swiftmarine.azurewebsites.net/";
 
+
 const container = document.querySelector("#table");
 let hot = null;
 
@@ -43,12 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then((res) => res.json())
         .then((listData) => {
           listData.forEach((item) => {
-            const totalPrice = item.quantity * item.price;
             const itemInfo = [
               item.description,
               item.quantity,
               item.price,
-              totalPrice,
+              '',
               "EUR",
               item.referenceNumber,
             ];
@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(itemInfo);
           });
           createTable();
+          for (let row = 0; row < data.length; row++) {
+            applyTotalPriceFormula(row);
+          }
           document.querySelector(".container").classList.add("container-top");
           document
             .querySelector(".button-container")
@@ -100,7 +103,25 @@ function createTable() {
     colHeaders: columnHeaders,
     customBorders: true,
     licenseKey: "non-commercial-and-evaluation",
+    formulas: {
+      engine: HyperFormula,
+    },
+    afterChange: (changes, source) => {
+      if (source !== "loadData" && source !== "applyFormula") {
+        for (const change of changes) {
+          const [row, col] = change;
+          if (col === 1 || col === 2) {
+            applyTotalPriceFormula(row);
+          }
+        }
+      }
+    },
   });
+}
+
+function applyTotalPriceFormula(row) {
+  const formula = `=B${row + 1}*C${row + 1}`;
+  hot.setDataAtCell(row, 3, formula, "applyFormula");
 }
 
 function clearTable() {
