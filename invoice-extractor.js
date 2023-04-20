@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       uploadButtonInvoiceEx.style.display = "none";
       const files = Array.from(input.files);
       if (files.length === 0) return;
+      if (uploadFiles(files) === false) return;
 
       const formData = new FormData();
 
@@ -88,6 +89,19 @@ const columnHeaders = [
   "Currency",
   "PO",
 ];
+
+
+function uploadFiles(files) {
+  for (let i = 0; i < files.length; i++) {
+    const fileSizeInMB = files[i].size / (1024 * 1024);
+    if (fileSizeInMB > 10) {
+      alert(`File ${files[i].name} exceeds 10MB limit. Please select a smaller file.`);
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("uploadButton-invoice-ex").style.display = "block";
+      return false;
+    }
+  } return true;
+}
 
 function createTable() {
   hot = new Handsontable(container, {

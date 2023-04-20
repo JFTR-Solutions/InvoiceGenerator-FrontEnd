@@ -26,6 +26,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    function uploadFiles(files) {
+      for (let i = 0; i < files.length; i++) {
+        const fileSizeInMB = files[i].size / (1024 * 1024);
+        if (fileSizeInMB > 10) {
+          alert(`File ${files[i].name} exceeds 10MB limit. Please select a smaller file.`);
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("uploadButton").style.display = "block";
+          return false;
+        }
+      } return true;
+    }
+
+
     
     if (document.getElementById('uploadButton')) {
       const uploadButton = document.getElementById('uploadButton');
@@ -42,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const files = Array.from(input.files);
         const dispatchNumber = document.getElementById("numberInput").value;
         if (files.length === 0) return;
+        if (uploadFiles(files) === false) return;
       
         const formData = new FormData();
         formData.append('dispatchNumber', dispatchNumber);
