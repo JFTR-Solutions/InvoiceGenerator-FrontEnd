@@ -1,5 +1,5 @@
-const URL = 'http://localhost:8080/';
-//const URL = 'https://swiftmarine.azurewebsites.net/';
+//const URL = 'http://localhost:8080/';
+const URL = 'https://swiftmarine.azurewebsites.net/';
 
 document.addEventListener('DOMContentLoaded', () => {
   checkifloggedin();
