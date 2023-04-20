@@ -1,5 +1,5 @@
-//const URL = 'http://localhost:8080/auth/login';
-const URL = "https://swiftmarine.azurewebsites.net/auth/login";
+const URL = 'http://localhost:8080/auth/login';
+//const URL = "https://swiftmarine.azurewebsites.net/auth/login";
 
 const errorMessage = document.getElementById("errorMessage");
 
@@ -43,7 +43,7 @@ loginForm.addEventListener("submit", (event) => {
       localStorage.setItem("token", data.token);
       document.getElementById("loader").style.display = "none";
       document.getElementById("submitBtn").style.display = "block";
-      window.location.href = "index.html";
+      window.location.href = "../../index.html";
     })
     .catch((error) => {
       console.log(error.message);

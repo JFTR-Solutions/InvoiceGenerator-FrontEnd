@@ -1,5 +1,5 @@
-//const headURL = 'http://localhost:8080/';
-const headURL = "https://swiftmarine.azurewebsites.net/";
+const headURL = 'http://localhost:8080/';
+//const headURL = "https://swiftmarine.azurewebsites.net/";
 
 
 const container = document.querySelector("#table");

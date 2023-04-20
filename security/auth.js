@@ -1,14 +1,14 @@
 const token = localStorage.getItem('token');
 if (!token) {
 	// User is not logged in, redirect to login page
-	window.location.href = 'login.html';
+	window.location.href = '../pages/login/login.html';
 }
 
 async function checkifloggedin() {
   const token = localStorage.getItem('token');
   if (!token) {
     // User is not logged in, redirect to login page
-    window.location.href = 'login.html';
+    window.location.href = '../pages/login/login.html';
   }
 
   try {
@@ -27,7 +27,7 @@ async function checkifloggedin() {
     console.error(error);
     // Display an error message to the user
     localStorage.setItem('errorMessage', 'tokeninvalid');
-    window.location.href = 'login.html';
+    window.location.href = '../pages/login/login.html';
     errorMessage.textContent = 'Invalid token. Please login again..';
   }
 }
